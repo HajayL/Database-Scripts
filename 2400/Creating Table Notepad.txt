@@ -1,0 +1,29 @@
+DROP TABLE IF EXISTS [TableName]
+GO
+
+CREATE TABLE [TableName](
+	--
+	[ColumnName] INT IDENTITY(seed, increment) NOT NULL -- Usually 1, 1
+	
+	-- Or make it a primary key
+	
+	[ColumnName] INT IDENTITY NOT NULL PRIMARY KEY -- Note you don't need seed and increment
+	--
+	
+	[ColumnName] [Type],
+	[ColumnName] AS {Calculations}, -- Computed columns
+	[ColumnName] [Type] CHECK({Conditions}),
+	[ForeignKeyName] [Type] NOT NULL
+	
+	-- Or create Primary key after column exists
+	
+	CONSTRAINT PK_[ColumnName] PRIMARY KEY ([ColumnName]),-- Note that "PK_" is not needed, just common naming style
+	CONSTRAINT FK_[ForeignKeyName] FOREIGN KEY ([ForeignKeyName]) REFERENCES [TABLE](ColumnName)
+	
+)
+GO
+
+-------------- INSERTING
+
+INSERT [TableName] ([Columns], ) -- Note calculated columns cannot be inserted, and identity columns should not be editted
+VALUES ([value], ) -- Matchs columns respectivelty
