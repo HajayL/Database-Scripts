@@ -25,5 +25,5 @@ GO
 
 -------------- INSERTING
 
-INSERT [TableName] ([Columns], ) -- Note calculated columns cannot be inserted, and identity columns should not be editted
-VALUES ([value], ) -- Matchs columns respectivelty
+INSERT [TableName] ([Columns]) -- Note calculated columns cannot be inserted, and identity columns should not be editted
+VALUES ([value]) -- Matchs columns respectivelty
