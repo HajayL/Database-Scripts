@@ -57,7 +57,7 @@ CREATE TABLE Enrollments(
 	CourseID int NOT NULL,
 	InstructorID int NOT NULL,
 	Grade char(2) NOT NULL CHECK(
-		Grade LIKE '[A,B,C,D]%' AND (Grade LIKE '%[+,-]' OR RIGHT(Grade, 1) = '')
+		Grade LIKE '[ABCD]%' AND (Grade LIKE '%[+-]' OR RIGHT(Grade, 1) = '') OR LEFT(Grade, 1) = 'F'
 	)
 
 	FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
