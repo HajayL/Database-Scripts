@@ -11,14 +11,19 @@ CREATE TABLE [TableName](
 	--
 	
 	[ColumnName] [Type],
+	[ColumnName] [Type] DEFAULT [Data],
 	[ColumnName] AS {Calculations}, -- Computed columns
 	[ColumnName] [Type] CHECK({Conditions}),
-	[ForeignKeyName] [Type] NOT NULL
+	[ForeignKeyName] [Type] NOT NULL,
+	[CompositeKeyPT1] [Type],
+	[CompositeKeyPT2] [Type]
 	
 	-- Or create Primary key after column exists
 	
-	CONSTRAINT PK_[ColumnName] PRIMARY KEY ([ColumnName]),-- Note that "PK_" is not needed, just common naming style
-	CONSTRAINT FK_[ForeignKeyName] FOREIGN KEY ([ForeignKeyName]) REFERENCES [TABLE](ColumnName)
+	CONSTRAINT PK_[TableTo]_[TableFrom] PRIMARY KEY ([ColumnName]),-- Note that "PK_" is not needed, just common naming style
+	CONSTRAINT PK_[CompositeName] PRIMARY KEY ([CompositeKeyPT1], [CompositeKeyPT2]),
+	CONSTRAINT FK_[ForeignKeyName] FOREIGN KEY ([ForeignKeyName]) REFERENCES [TABLE](ColumnName),
+	CONSTRAINT NN_[KeyCheckName] CHECK ([ForeignKeyName] IS NOT NULL)
 	
 )
 GO
@@ -27,3 +32,8 @@ GO
 
 INSERT [TableName] ([Columns]) -- Note calculated columns cannot be inserted, and identity columns should not be editted
 VALUES ([value]) -- Matchs columns respectivelty
+
+------------ ALTERING
+
+ALTER TABLE [TableName]
+ADD CONSTRAINT [ConstraintName] [Constraint]
