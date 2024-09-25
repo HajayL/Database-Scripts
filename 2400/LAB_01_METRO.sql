@@ -41,7 +41,10 @@ GO
 
 CREATE TABLE TripLeg(
 	TripPlanId int NOT NULL,
+	CONSTRAINT FK_TripPlanId FOREIGN KEY (TripPlanId) REFERENCES TripPlans(TripPlanId),
+
 	TransitLine varchar(50) NOT NULL,
+	CONSTRAINT FK_TransitLine FOREIGN KEY (TransitLine) REFERENCES TransitLines(TransitLine),
 
 	StartStation varchar(50) NOT NULL,
 	CONSTRAINT FK_StartStation FOREIGN KEY (StartStation) REFERENCES Stations(Station),
