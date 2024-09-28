@@ -33,7 +33,7 @@
 -- Q11	- Return all customers with a postal code that respects that Canadian postal code system (has a space in the middle) example -> 'TTT 555'
 
 
--- Q12	- Return all orders that were made on this day, but with any year
+-- Q12	- Return all orders that were made on this day, but with any year or month
 
 
 -- Q13	- Create a variable that stores the city 'Seattle' use that variable to return all employees in that city
