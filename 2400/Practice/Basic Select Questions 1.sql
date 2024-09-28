@@ -1,6 +1,6 @@
 -- Use Northwind Traders for these questions
 
--- Q1	- Return all employees who have a Fax
+-- Q1	- Return all customers who have a Fax
 
 
 -- Q2	- Return all orders that have a shipping region and a ship postal code
